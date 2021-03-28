@@ -10,6 +10,7 @@ namespace ShopManagement.Application.Contracts.ProductCategories
         OperationResult Craete(CreateProductCategory command);
         OperationResult Edit(EditProductCategory command);
         EditProductCategory GetDetails(long id);
+        List<ProductCategoryViewModel> GetProductCategories();
         List<ProductCategoryViewModel> Search(ProductCategortSearchModel searchModel);
     }
 }

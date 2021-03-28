@@ -23,7 +23,7 @@ namespace ShopManagement.Application
         {
             var operation = new OperationResult();
             if (_productCategoryRepository.Exists(x => x.Name == command.Name))
-                return operation.Failed("امکان ایجاد رکورد تکراری نمی باشد. لطفا مجدد تلاش نمائید.");
+                return operation.Failed(ApplicationMessage.DuplicatedRecord);
 
             var slug = command.Slug.Slugify();
             var productCategory = new ProductCategory(command.Name, command.Description, command.Picture,
@@ -41,10 +41,10 @@ namespace ShopManagement.Application
             var operation = new OperationResult();
             var productCategory = _productCategoryRepository.Get(command.Id);
             if (productCategory == null)
-                return operation.Failed("رکورد با اطلاعات وارد شده یافت نشد");
+                return operation.Failed(ApplicationMessage.RecordNotFound);
 
             if (_productCategoryRepository.Exists(x => x.Name == command.Name && x.Id != command.Id))
-                return operation.Failed("امکان ایجاد رکورد تکراری نمی باشد. لطفا مجدد تلاش نمائید.");
+                return operation.Failed(ApplicationMessage.DuplicatedRecord);
 
             var slug = command.Slug.Slugify();
             productCategory.Edit(command.Name, command.Description, command.Picture, command.PictureAlt,
@@ -60,8 +60,14 @@ namespace ShopManagement.Application
         {
             return _productCategoryRepository.GetDetails(id);
         }
-
         #endregion
+
+        public List<ProductCategoryViewModel> GetProductCategories()
+        {
+            return _productCategoryRepository.GetProductCategories();
+        }
+
+       
 
         #region Search
         public List<ProductCategoryViewModel> Search(ProductCategortSearchModel searchModel)
