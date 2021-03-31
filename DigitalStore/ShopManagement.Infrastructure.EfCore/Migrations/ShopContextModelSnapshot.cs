@@ -194,10 +194,6 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DiscountRate")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
                     b.Property<string>("Heading")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -205,6 +201,10 @@ namespace ShopManagement.Infrastructure.EfCore.Migrations
 
                     b.Property<bool>("IsRemoved")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Link")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Picture")
                         .IsRequired()

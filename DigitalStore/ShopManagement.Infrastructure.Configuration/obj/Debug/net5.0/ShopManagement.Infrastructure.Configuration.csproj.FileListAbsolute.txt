@@ -24,3 +24,5 @@ C:\Users\HP\Desktop\DigitalStores\DigitalStore\ShopManagement.Infrastructure.Con
 C:\Users\HP\Desktop\DigitalStores\DigitalStore\ShopManagement.Infrastructure.Configuration\obj\Debug\net5.0\ref\ShopManagement.Infrastructure.Configuration.dll
 C:\Users\HP\Desktop\DigitalStores\DigitalStore\ShopManagement.Infrastructure.Configuration\obj\Debug\net5.0\ShopManagement.Infrastructure.Configuration.pdb
 C:\Users\HP\Desktop\DigitalStores\DigitalStore\ShopManagement.Infrastructure.Configuration\obj\Debug\net5.0\ShopManagement.Infrastructure.Configuration.genruntimeconfig.cache
+C:\Users\HP\Desktop\DigitalStores\DigitalStore\ShopManagement.Infrastructure.Configuration\bin\Debug\net5.0\01_DigitalStoreQuery.dll
+C:\Users\HP\Desktop\DigitalStores\DigitalStore\ShopManagement.Infrastructure.Configuration\bin\Debug\net5.0\01_DigitalStoreQuery.pdb

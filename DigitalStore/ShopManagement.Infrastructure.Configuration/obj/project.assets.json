@@ -1520,6 +1520,19 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "01_DigitalStoreQuery/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "ShopManagement.Infrastructure.EfCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/01_DigitalStoreQuery.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/01_DigitalStoreQuery.dll": {}
+        }
+      },
       "0_Framework/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -5857,6 +5870,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "01_DigitalStoreQuery/1.0.0": {
+      "type": "project",
+      "path": "../01_DigitalStoreQuery/01_DigitalStoreQuery.csproj",
+      "msbuildProject": "../01_DigitalStoreQuery/01_DigitalStoreQuery.csproj"
+    },
     "0_Framework/1.0.0": {
       "type": "project",
       "path": "../0_Framework/0_Framework.csproj",
@@ -5885,6 +5903,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "01_DigitalStoreQuery >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.4",
@@ -5921,6 +5940,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+            "C:\\Users\\HP\\Desktop\\DigitalStores\\DigitalStore\\01_DigitalStoreQuery\\01_DigitalStoreQuery.csproj": {
+              "projectPath": "C:\\Users\\HP\\Desktop\\DigitalStores\\DigitalStore\\01_DigitalStoreQuery\\01_DigitalStoreQuery.csproj"
+            },
             "C:\\Users\\HP\\Desktop\\DigitalStores\\DigitalStore\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
               "projectPath": "C:\\Users\\HP\\Desktop\\DigitalStores\\DigitalStore\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
             },

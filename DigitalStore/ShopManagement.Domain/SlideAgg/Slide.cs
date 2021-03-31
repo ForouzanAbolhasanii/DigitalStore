@@ -1,9 +1,5 @@
 ﻿using _0_Framework.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ShopManagement.Domain.SlideAgg
 {
@@ -15,12 +11,11 @@ namespace ShopManagement.Domain.SlideAgg
         public string Heading { get; private set; }
         public string Title { get; private set; }
         public string Text { get; private set; }
-        public string DiscountRate { get; private set; }
+        public string Link { get; private set; }
         public string BtnText { get; private set; }
         public bool IsRemoved { get; private set; }
 
-        public Slide(string picture, string pictureAlt, string pictureTitle, string heading,
-            string title, string text, string discountRate, string btnText)
+        public Slide(string picture, string pictureAlt, string pictureTitle, string heading, string title, string text, string link, string btnText)
         {
             Picture = picture;
             PictureAlt = pictureAlt;
@@ -28,13 +23,12 @@ namespace ShopManagement.Domain.SlideAgg
             Heading = heading;
             Title = title;
             Text = text;
-            DiscountRate = discountRate;
+            Link = link;
             BtnText = btnText;
             IsRemoved = false;
         }
 
-        public void Edit (string picture, string pictureAlt, string pictureTitle, string heading,
-            string title, string text, string discountRate, string btnText)
+        public void Edit(string picture, string pictureAlt, string pictureTitle, string heading, string title, string text, string link, string btnText)
         {
             Picture = picture;
             PictureAlt = pictureAlt;
@@ -42,7 +36,7 @@ namespace ShopManagement.Domain.SlideAgg
             Heading = heading;
             Title = title;
             Text = text;
-            DiscountRate = discountRate;
+            Link = link;
             BtnText = btnText;
         }
 
