@@ -4,6 +4,7 @@ using DiscountManagement.Application.Contracts.ColleagueDiscount;
 using DiscountManagement.Domain.ColleagueDiscountAgg;
 using ShopManagement.Infrastructure.EfCore;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 
@@ -34,9 +35,10 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
             var products = _shopContext.Products.Select(x => new { x.Id, x.Name }).ToList();
             var query = _context.ColleagueDiscounts.Select(x => new ColleagueDiscountViewModel() {
                 Id = x.Id,
-                 CreationDate = x.CreationDate.ToFarsi(),
+                 CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
                  DiscountRate = x.DiscountRate,
-                 ProductId = x.ProductId
+                 ProductId = x.ProductId,
+                 IsRemoved = x.IsRemoved
             });
 
             if (searchModel.ProductId > 0)
