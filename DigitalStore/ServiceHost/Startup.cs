@@ -1,4 +1,5 @@
 using DiscountManagement.Configuration;
+using InventoryManagement.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,7 @@ namespace ServiceHost
             var connectionString = Configuration.GetConnectionString("DigitalStoreDb");
             ShopManagementBoostrapper.Configur(services , connectionString);
             DiscountManagementBootstrapper.Configure(services, connectionString);
+            InventoryManagementBootstrapper.Configure(services, connectionString);
             services.AddRazorPages();
         }
 

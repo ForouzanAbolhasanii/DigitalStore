@@ -8,7 +8,6 @@ namespace InventoryManagement.Application.Contracts.Inventory
     {
         public long ProductId { get; set; }
         public double UnitPrice { get; set; }
-        public string Description { get; set; }
         public List<ProductViewModel> Products { get; set; }
     }
 }
