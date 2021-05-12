@@ -23,7 +23,6 @@ namespace ShopManagement.Infrastructure.EfCore.Repository
                 //Link = x.Link,
                 Heading = x.Heading,
                 Id = x.Id,
-                Picture = x.Picture,
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 Text = x.Text,
