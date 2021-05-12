@@ -25,3 +25,5 @@ C:\Users\HP\Desktop\DigitalStores\DigitalStore\InventoryManagement.Configuration
 C:\Users\HP\Desktop\DigitalStores\DigitalStore\InventoryManagement.Configuration\obj\Debug\net5.0\InventoryManagement.Configuration.dll
 C:\Users\HP\Desktop\DigitalStores\DigitalStore\InventoryManagement.Configuration\obj\Debug\net5.0\ref\InventoryManagement.Configuration.dll
 C:\Users\HP\Desktop\DigitalStores\DigitalStore\InventoryManagement.Configuration\obj\Debug\net5.0\InventoryManagement.Configuration.pdb
+C:\Users\HP\Desktop\DigitalStores\DigitalStore\InventoryManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Application.dll
+C:\Users\HP\Desktop\DigitalStores\DigitalStore\InventoryManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Application.pdb

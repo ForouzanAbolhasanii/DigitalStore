@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace InventoryManagement.Domain.InventoryAgg
             ProductId = productId;
             UnitPrice = unitPrice;
             InStock = false;
+            CreationDate = DateTime.Now;
               
         }
 

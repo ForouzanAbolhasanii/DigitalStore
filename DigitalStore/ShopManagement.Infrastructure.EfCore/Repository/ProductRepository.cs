@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Domain.ProductAgg;
 using System.Collections.Generic;
@@ -22,7 +23,6 @@ namespace ShopManagement.Infrastructure.EfCore.Repository
             {
                 Id = x.Id,
                 Name = x.Name,
-                Picture = x.Picture,
                 Code = x.Code,
                 Description = x.Description,
                 Keywords = x.Keywords,
@@ -31,7 +31,6 @@ namespace ShopManagement.Infrastructure.EfCore.Repository
                 PictureTitle = x.PictureTitle,
                 ShortDescription = x.ShortDescription,
                 Slug = x.Slug,
-                UnitPrice = x.UnitPrice,
                 CategoryId = x.CategoryId
             }).FirstOrDefault(x => x.Id == id);
         }
@@ -45,6 +44,11 @@ namespace ShopManagement.Infrastructure.EfCore.Repository
             }).ToList();
         }
 
+        public Product GetProductWithCategory(long id)
+        {
+            return _context.Products.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
+        }
+
         public List<ProductViewModel> Search(ProductSearchModel searchModel)
         {
             var query = _context.Products.Select(x => new ProductViewModel()
@@ -53,10 +57,8 @@ namespace ShopManagement.Infrastructure.EfCore.Repository
                 Code = x.Code,
                 Name = x.Name,
                 Picture = x.Picture,
-                UnitPrice = x.UnitPrice,
                 Category = x.Category.Name,
                 CategoryId = x.CategoryId,
-                IsInStock = x.IsInStock,
                 CreationDate = x.CreationDate.ToString()
             }) ;
 

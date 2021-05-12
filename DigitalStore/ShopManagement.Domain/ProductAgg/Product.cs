@@ -18,8 +18,6 @@ namespace ShopManagement.Domain.ProductAgg
         public string Picture { get; private set; }
         public string PictureAlt { get; private set; }
         public string PictureTitle { get; private set; }
-        public double UnitPrice { get; private set; }
-        public bool IsInStock { get; private set; }
         public string Keywords { get; private set; }
         public string MetaDescription { get; private set; }
         public string Slug { get; private set; }
@@ -28,7 +26,7 @@ namespace ShopManagement.Domain.ProductAgg
         public List<ProductPicture> ProductPictures { get; set; }
 
         public Product(string name, string code, string shortDescription, string description, string picture, string pictureAlt,
-            string pictureTitle, double unitPrice, string keywords, string metaDescription, string slug, long categoryId)
+            string pictureTitle, string keywords, string metaDescription, string slug, long categoryId)
         {
             Name = name;
             Code = code;
@@ -37,39 +35,29 @@ namespace ShopManagement.Domain.ProductAgg
             Picture = picture;
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
-            UnitPrice = unitPrice;
             Keywords = keywords;
             MetaDescription = metaDescription;
             Slug = slug;
             CategoryId = categoryId;
-            IsInStock = true;
+            CreationDate = DateTime.Now;
         }
 
         public void Edit(string name, string code, string shortDescription, string description, string picture, string pictureAlt,
-            string pictureTitle, double unitPrice, string keywords, string metaDescription, string slug, long categoryId)
+            string pictureTitle, string keywords, string metaDescription, string slug, long categoryId)
         {
             Name = name;
             Code = code;
             ShortDescription = shortDescription;
             Description = description;
-            Picture = picture;
+            if (!string.IsNullOrWhiteSpace(picture))
+                Picture = picture;
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
-            UnitPrice = unitPrice;
             Keywords = keywords;
             MetaDescription = metaDescription;
             Slug = slug;
             CategoryId = categoryId;
         }
 
-        public void InStock()
-        {
-            IsInStock = true;
-        }
-
-        public void NotInStock()
-        {
-            IsInStock = false;
-        }
     }
 }

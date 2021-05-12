@@ -7,6 +7,7 @@ namespace ShopManagement.Application.Contracts.ProductCategories
 {
    public interface IProductCategoryApplication
     {
+        
         OperationResult Craete(CreateProductCategory command);
         OperationResult Edit(EditProductCategory command);
         EditProductCategory GetDetails(long id);

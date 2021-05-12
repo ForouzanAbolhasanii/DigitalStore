@@ -1,5 +1,6 @@
 ﻿
 using _0_Framework.Application;
+using Microsoft.AspNetCore.Http;
 using ShopManagement.Application.Contracts.ProductCategories;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,12 +20,10 @@ namespace ShopManagement.Application.Contracts.Product
 
         [Required(ErrorMessage = ValidationMessage.IsRequired)]
         public string Description { get; set; }
-        public string Picture { get; set; }
+        public IFormFile Picture { get; set; }
         public string PictureAlt { get; set; }
         public string PictureTitle { get; set; }
 
-        [Range(1 , 100000 , ErrorMessage = ValidationMessage.IsRequired)]
-        public double UnitPrice { get; set; }
 
         [Required(ErrorMessage = ValidationMessage.IsRequired)]
         public string Keywords { get; set; }

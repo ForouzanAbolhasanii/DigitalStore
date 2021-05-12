@@ -9,9 +9,9 @@ namespace InventoryManagement.Application
 {
     public class InventoryApplication : IInventoryApplication
     {
-        private readonly InventoryRepository _inventoryRepository;
+        private readonly IInventoryRepository _inventoryRepository;
 
-        public InventoryApplication(InventoryRepository inventoryRepository)
+        public InventoryApplication(IInventoryRepository inventoryRepository)
         {
             _inventoryRepository = inventoryRepository;
         }
@@ -45,6 +45,11 @@ namespace InventoryManagement.Application
         public EditInventory GetDetails(long id)
         {
             return _inventoryRepository.GetDetails(id);
+        }
+
+        public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
+        {
+            return _inventoryRepository.GetOperationLog(inventoryId);
         }
 
         public OperationResult Increase(IncreaseInventory command)
