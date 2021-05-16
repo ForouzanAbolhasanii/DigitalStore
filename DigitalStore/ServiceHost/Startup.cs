@@ -1,4 +1,6 @@
 using _0_Framework.Application;
+using _01_DigitalStoreQuery.Contract.Product;
+using _01_DigitalStoreQuery.Query;
 using DiscountManagement.Configuration;
 using InventoryManagement.Configuration;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +35,7 @@ namespace ServiceHost
             InventoryManagementBootstrapper.Configure(services, connectionString);
 
             services.AddTransient<IFileUploader , FileUploader>();
+            services.AddTransient<IProductQuery, ProductQuery>();
             services.AddRazorPages();
         }
 
