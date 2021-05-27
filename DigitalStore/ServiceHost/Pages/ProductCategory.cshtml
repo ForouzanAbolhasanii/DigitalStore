@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id}"
 @model ServiceHost.Pages.ProductCategoryModel
 @{
     ViewData["Title"] = "محصولات";
@@ -82,7 +82,7 @@
 
                                                             </div>
                                                             }
-                                                        <a href="single-product.html">
+                                                        <a asp-page="/Product" asp-route-id="@product.Slug">
                                                             <img src="~/ProductPicture/@product.Picture" class="img-fluid"
                                                                  alt="@product.PictureAlt" title="@product.PictureTitle">
                                                         </a>
@@ -100,7 +100,7 @@
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
                                                             <span class="category">
-                                                                <a href="shop-left-sidebar.html">@product.Category</a>
+                                                                <a asp-page="/Product" asp-route-id="@product.Slug">@product.Category</a>
                                                             </span>
                                                             <span class="rating">
                                                                 <i class="ion-android-star active"></i>

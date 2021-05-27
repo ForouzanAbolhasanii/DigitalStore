@@ -3,6 +3,7 @@ using _01_DigitalStoreQuery.Contract.Product;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EfCore;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,64 @@ namespace _01_DigitalStoreQuery.Query
             }
 
             return products;
+        }
+
+        public ProductQueryModel GetProductDetails(string slug)
+        {
+            var invenrory = _inventoryContext.inventory.Select(x => new { x.ProductId, x.UnitPrice, x.InStock }).ToList();
+            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).ToList();
+
+            var product = _shopContext.Products.Include(x=> x.Category).Include(x=> x.ProductPictures).Select(x => new ProductQueryModel { 
+                Id = x.Id,
+                Code = x.Code,
+                Category = x.Category.Name,
+                Name = x.Name,
+                Slug = x.Slug,
+                CategorySlug = x.Category.Slug,
+                Description = x.Description,
+                KeyWords = x.Keywords,
+                MetaDescription = x.MetaDescription,
+                Picture = x.Picture,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
+                ShortDescription = x.ShortDescription,
+                ProductPictures = MapProductPicture(x.ProductPictures)
+            }).FirstOrDefault(x => x.Slug == slug);
+
+            if (product == null)
+                return new ProductQueryModel();
+
+            var productInventory = invenrory.FirstOrDefault(x => x.ProductId == product.Id);
+            if(productInventory != null)
+            {
+                var price = productInventory.UnitPrice;
+                product.Price = price.ToMoney();
+                product.InStock = productInventory.InStock;
+                var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                if(discount != null)
+                {
+                    int discountRate = discount.DiscountRate;
+                    product.DiscountRate = discountRate;
+                    product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+                    product.HasDiscount = discountRate > 0;
+                    var discountAmount = Math.Round((price * discountRate) / 100);
+                    product.PriceWithDiscount = (price - discountAmount).ToMoney();
+
+                }
+            }
+
+            return product;
+        }
+
+        private static List<ProductPictureQueryModel> MapProductPicture(List<ProductPicture> productPictures)
+        {
+            return productPictures.Select(x => new ProductPictureQueryModel() 
+            {
+              Picture = x.Picture,
+              ProductId = x.ProductId,
+              PictureAlt = x.PictureAlt,
+              PictureTitle = x.PictureTitle
+            }).Where(x=> !x.IsRemoved).ToList();
         }
 
         public List<ProductQueryModel> Search(string value)

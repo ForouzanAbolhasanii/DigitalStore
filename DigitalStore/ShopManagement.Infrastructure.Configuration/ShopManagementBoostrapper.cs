@@ -4,10 +4,12 @@ using _01_DigitalStoreQuery.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShopManagement.Application;
+using ShopManagement.Application.Contracts.Comment;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductCategories;
 using ShopManagement.Application.Contracts.ProductPicture;
 using ShopManagement.Application.Contracts.Slide;
+using ShopManagement.Domain.CommentAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
@@ -32,6 +34,9 @@ namespace ShopManagement.Infrastructure.Configuration
             services.AddTransient<ISlideRepository, SlideRepository>();
             services.AddTransient<ISlideQuery, SlideQuery>();
             services.AddTransient<IProductCategoryQuery, ProductCategoryQuery>();
+
+            services.AddTransient<ICommentRepository, CommentRepository>();
+            services.AddTransient<ICommentApplication, CommentApplication>();
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionString));
         }
     }
