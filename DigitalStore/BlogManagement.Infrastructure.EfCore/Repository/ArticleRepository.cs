@@ -51,7 +51,6 @@ namespace BlogManagement.Infrastructure.EfCore.Repository
                 Category = x.Category.Name,
                 CategoryId = x.CategoryId,
                 PublishDate = x.PublishDate.ToFarsi(),
-                CreationDate = x.CreationDate.ToFarsi(),
                 ShortDescription = x.ShortDescription,
                 Title = x.Title
             });
